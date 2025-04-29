@@ -16,7 +16,7 @@ class StreamlyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Streamly',
       theme: appTheme,
-      initialRoute: '/login',
+      initialRoute: '/home',
       routes: {
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegistrationScreen(),

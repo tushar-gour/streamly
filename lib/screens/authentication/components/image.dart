@@ -10,10 +10,10 @@ class CustomLoginIcon extends StatelessWidget {
       width: 150,
       height: 150,
       padding: const EdgeInsets.all(25),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
         gradient: LinearGradient(
-          colors: [gradient1, gradient2],
+          colors: [primaryColor, primaryColorDark],
         ),
       ),
       child: AspectRatio(

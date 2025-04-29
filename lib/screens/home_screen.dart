@@ -4,6 +4,7 @@ import '../providers/video_provider.dart';
 import '../widgets/video_card.dart';
 import 'video_detail_screen.dart';
 import '../models/video.dart';
+import 'package:streamly/widgets/custom_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,8 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Streamly'),
+      appBar: const CustomAppBar(
+        title: 'Streamly',
       ),
       body: Consumer<VideoProvider>(
         builder: (context, videoProvider, child) {
