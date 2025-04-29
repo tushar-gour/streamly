@@ -12,10 +12,10 @@ const Color errorColor = Color(0xFFB00020);
 final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: primaryColor,
-  colorScheme: ColorScheme.light(
-    primary: primaryColor,
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: primaryColor,
+    brightness: Brightness.light,
     secondary: secondaryColor,
-    background: backgroundLight,
     surface: surfaceLight,
     error: errorColor,
   ),
@@ -39,10 +39,10 @@ final ThemeData lightTheme = ThemeData(
 final ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   primaryColor: primaryColorDark,
-  colorScheme: ColorScheme.dark(
-    primary: primaryColorDark,
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: primaryColorDark,
+    brightness: Brightness.dark,
     secondary: secondaryColor,
-    background: backgroundDark,
     surface: surfaceDark,
     error: errorColor,
   ),
@@ -64,4 +64,3 @@ final ThemeData darkTheme = ThemeData(
 );
 
 final ThemeData appTheme = lightTheme;
-
