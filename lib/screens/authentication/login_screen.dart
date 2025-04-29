@@ -61,7 +61,8 @@ class LoginScreenState extends State<LoginScreen> {
                 Text(_errorMessage!, style: const TextStyle(color: Colors.red)),
               TextFormField(
                 controller: _usernameController,
-                decoration: const InputDecoration(labelText: 'Username or Email'),
+                decoration:
+                    const InputDecoration(labelText: 'Username or Email'),
                 validator: (value) =>
                     value == null || value.isEmpty ? 'Required' : null,
               ),
