@@ -9,11 +9,11 @@ class VideoCommentsScreen extends StatefulWidget {
   final String accessToken;
 
   const VideoCommentsScreen({
-    Key? key,
+    super.key,
     required this.videoId,
     required this.userId,
     required this.accessToken,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() {

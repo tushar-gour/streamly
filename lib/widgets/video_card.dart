@@ -5,8 +5,7 @@ class VideoCard extends StatelessWidget {
   final Video video;
   final VoidCallback onTap;
 
-  const VideoCard({Key? key, required this.video, required this.onTap})
-      : super(key: key);
+  const VideoCard({super.key, required this.video, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

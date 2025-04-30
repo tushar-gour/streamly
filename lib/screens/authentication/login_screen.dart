@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../providers/user_provider.dart';
 import 'components/custom_button.dart';
 
@@ -15,8 +16,14 @@ class LoginScreenState extends State<LoginScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  final _secureStorage = const FlutterSecureStorage();
+
   bool _isLoading = false;
   String? _errorMessage;
+
+  void _navigate(String route) {
+    Navigator.pushReplacementNamed(context, route);
+  }
 
   void _login() async {
     if (!_formKey.currentState!.validate()) return;
@@ -39,7 +46,13 @@ class LoginScreenState extends State<LoginScreen> {
     });
 
     if (success) {
-      Navigator.pushReplacementNamed(context, '/home');
+      // Save credentials securely
+      await _secureStorage.write(
+          key: 'username', value: _usernameController.text.trim());
+      await _secureStorage.write(
+          key: 'password', value: _passwordController.text.trim());
+
+      _navigate('/home');
     } else {
       setState(() {
         _errorMessage = 'Login failed. Please check your credentials.';

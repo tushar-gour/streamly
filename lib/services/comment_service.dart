@@ -5,8 +5,10 @@ import '../globals/globals.dart';
 class CommentService {
   final String baseUrl = Globals.baseUrl;
 
-  Future<http.Response> getVideoComments(String videoId, {int page = 1, int limit = 10}) async {
-    final uri = Uri.parse('\$baseUrl/comments/\$videoId').replace(queryParameters: {
+  Future<http.Response> getVideoComments(String videoId,
+      {int page = 1, int limit = 10}) async {
+    final uri =
+        Uri.parse('\$baseUrl/comments/\$videoId').replace(queryParameters: {
       'page': page.toString(),
       'limit': limit.toString(),
     });
@@ -14,7 +16,8 @@ class CommentService {
     return response;
   }
 
-  Future<http.Response> addComment(String videoId, String userId, String content, String accessToken) async {
+  Future<http.Response> addComment(
+      String videoId, String userId, String content, String accessToken) async {
     final uri = Uri.parse('\$baseUrl/comments/\$videoId');
     final response = await http.post(
       uri,
@@ -30,7 +33,8 @@ class CommentService {
     return response;
   }
 
-  Future<http.Response> updateComment(String commentId, String content, String accessToken) async {
+  Future<http.Response> updateComment(
+      String commentId, String content, String accessToken) async {
     final uri = Uri.parse('\$baseUrl/comments/c/\$commentId');
     final response = await http.patch(
       uri,
@@ -43,7 +47,8 @@ class CommentService {
     return response;
   }
 
-  Future<http.Response> deleteComment(String commentId, String accessToken) async {
+  Future<http.Response> deleteComment(
+      String commentId, String accessToken) async {
     final uri = Uri.parse('\$baseUrl/comments/c/\$commentId');
     final response = await http.delete(
       uri,

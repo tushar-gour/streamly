@@ -3,10 +3,11 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 
-import '../../../globals/global_constants.dart';
+import '../../../globals/globals.dart';
 
 class UserService {
   final Logger _logger = Logger();
+  final String baseUrl = Globals.baseUrl;
 
   Map<String, String> _buildHeaders(String token) {
     return {

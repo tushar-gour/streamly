@@ -38,9 +38,49 @@ class LikeProvider with ChangeNotifier {
   }
 
   Future<bool> toggleCommentLike(String commentId, String accessToken) async {
-    final response = await _likeService.toggleCommentLike(commentId, accessToken);
+    final response =
+        await _likeService.toggleCommentLike(commentId, accessToken);
     if (response.statusCode == 200 || response.statusCode == 201) {
       // Optionally refresh liked comments or update local state
+      return true;
+    }
+    return false;
+  }
+
+  Future<bool> isVideoLiked({
+    required String userId,
+    required String videoId,
+    required String accessToken,
+  }) async {
+    final response = await _likeService.isVideoLiked(videoId, accessToken);
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return data['liked'] ?? false;
+    }
+    return false;
+  }
+
+  Future<bool> likeVideo({
+    required String userId,
+    required String videoId,
+    required String accessToken,
+  }) async {
+    final response = await _likeService.likeVideo(videoId, accessToken);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      await fetchLikedVideos(accessToken);
+      return true;
+    }
+    return false;
+  }
+
+  Future<bool> unlikeVideo({
+    required String userId,
+    required String videoId,
+    required String accessToken,
+  }) async {
+    final response = await _likeService.unlikeVideo(videoId, accessToken);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      await fetchLikedVideos(accessToken);
       return true;
     }
     return false;

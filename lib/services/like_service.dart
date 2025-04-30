@@ -30,4 +30,31 @@ class LikeService {
     );
     return response;
   }
+
+  Future<http.Response> likeVideo(String videoId, String accessToken) async {
+    final uri = Uri.parse('\$baseUrl/likes/v/\$videoId');
+    final response = await http.post(
+      uri,
+      headers: {'Authorization': 'Bearer \$accessToken'},
+    );
+    return response;
+  }
+
+  Future<http.Response> unlikeVideo(String videoId, String accessToken) async {
+    final uri = Uri.parse('\$baseUrl/likes/v/\$videoId');
+    final response = await http.delete(
+      uri,
+      headers: {'Authorization': 'Bearer \$accessToken'},
+    );
+    return response;
+  }
+
+  Future<http.Response> isVideoLiked(String videoId, String accessToken) async {
+    final uri = Uri.parse('\$baseUrl/likes/v/\$videoId');
+    final response = await http.get(
+      uri,
+      headers: {'Authorization': 'Bearer \$accessToken'},
+    );
+    return response;
+  }
 }
